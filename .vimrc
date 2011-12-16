@@ -41,7 +41,11 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set statusline=%<%f%h%m%r\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P
+let g:git_branch_status_head_current=1
+let g:git_branch_status_text=""
+let g:git_branch_status_nogit="-"
+set statusline=%{GitBranchInfoString()}
+set statusline=%<%f%h%m%r%#ErrorMsg#%{GitBranchInfoString()}%#StatusLine#\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P
 set laststatus=2
 set smartindent
 set fo+=cr
