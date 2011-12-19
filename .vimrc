@@ -11,6 +11,16 @@ let xterm16_colormap    = 'soft'
 let xterm16_brightness  = 'med'
 colorscheme xterm16
 
+" vim_git preferences
+let g:git_branch_status_head_current=1
+let g:git_branch_status_text=""
+let g:git_branch_status_nogit="-"
+
+" vim gist preverences
+let g:gist_clip_command = 'xclip -selection clipboard'
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+let g:gist_browser_command = 'chromium-browser %URL%'
 
 " mouse
 set ttymouse=xterm2
@@ -41,9 +51,6 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-let g:git_branch_status_head_current=1
-let g:git_branch_status_text=""
-let g:git_branch_status_nogit="-"
 set statusline=%{GitBranchInfoString()}
 set statusline=%<%f%h%m%r%#ErrorMsg#%{GitBranchInfoString()}%#StatusLine#\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P
 set laststatus=2
