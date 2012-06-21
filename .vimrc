@@ -64,7 +64,7 @@ set fo+=cr
 set shortmess+=A
 set autoread
 set updatetime=500
-
+set completeopt=longest,menuone
 "let ropevim_vim_completion=1
 "let ropevim_extended_complete=1
 "let ropevim_enable_shortcuts=1
@@ -87,6 +87,7 @@ au BufEnter * silent! unmap <cr>
 au BufEnter *.py map <silent> <cr> :RopeGotoDefinition<cr>
 
 " insert and paste in all modes using system clipboard
+" make sure u have vim-gnome package
 map <F4> "+y
 map <F5> "+P
 imap <F5> <ESC>"+pa
