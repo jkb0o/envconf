@@ -65,6 +65,7 @@ set shortmess+=A
 set autoread
 set updatetime=500
 set completeopt=longest,menuone
+set wildmenu
 "let ropevim_vim_completion=1
 "let ropevim_extended_complete=1
 "let ropevim_enable_shortcuts=1
