@@ -1,3 +1,18 @@
+filetype off                   " required!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+Bundle 'scrooloose/syntastic'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'kien/ctrlp.vim'
+Bundle 'taq/vim-git-branch-info'
+Bundle 'mattn/gist-vim'
+Bundle 'motemen/git-vim'
+Bundle 'jmcantrell/vim-virtualenv'
+filetype plugin indent on
+
+
 set langmap=ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯЭХЪ;ABCDEFGHIJKLMNOPQRSTUVWXYZ\"{},фисвуапршолдьтщзйкыегмцчняхъ;abcdefghijklmnopqrstuvwxyz[]
 
 " colors
@@ -60,31 +75,20 @@ set statusline=%<%f%h%m%r%#ErrorMsg#%{VirtualEnvStatusline()}-%{GitBranchInfoStr
 set laststatus=2
 set smartindent
 set fo+=cr
+set wildignore+=*.so,*.swp,*.zip,*.pyc
 "set sessionoptions=curdir,buffers,tabpages
 set shortmess+=A
 set autoread
 set updatetime=500
 set completeopt=longest,menuone
-"let ropevim_vim_completion=1
-"let ropevim_extended_complete=1
-"let ropevim_enable_shortcuts=1
 
 
 " Template Toolkit
 au BufNewFile,BufRead *.tt setf tt2html
 
-"imap <Tab> <C-R>=TabWrapperRope()<CR>
-
 filetype plugin on
 
-" Rope settings
-let ropevim_vim_completion=1
-let ropevim_extended_complete=1
-let ropevim_enable_shortcuts=1
 noremap <c-b> <esc>:BufExplorer<cr>
-imap <C-l> <C-r>=RopeCodeAssistInsertMode()<CR>
-au BufEnter * silent! unmap <cr>
-au BufEnter *.py map <silent> <cr> :RopeGotoDefinition<cr>
 
 " insert and paste in all modes using system clipboard
 " make sure u have vim-gnome package
@@ -97,3 +101,11 @@ imap <F5> <ESC>"+pa
 nnoremap <silent> <M-F12> :BufExplorer<CR>
 nnoremap <silent> <F12> :bn<CR>
 nnoremap <silent> <S-F12> :bp<CR>
+
+"jedi config
+let g:jedi#goto_command = "<cr>"
+let g:jedi#autocompletion_command = "<C-l>"
+let g:jedi#popup_on_dot = 0
+"let g:jedi#use_tabs_not_buffers = 0
+
+nmap <Tab><Tab> <ESC>:tabN<CR>
