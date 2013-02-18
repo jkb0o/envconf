@@ -1,6 +1,8 @@
 #! /bin/bash
 CDIR=`pwd`
 NAMES=(.vimrc .vim .screenrc .gitconfig)
+git submodule init
+git submodule update
 for ((i=0;i<${#NAMES[@]};i++)); do
     NAME=${NAMES[${i}]}
     LOC=$HOME/$NAME
