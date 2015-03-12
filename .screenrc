@@ -4,6 +4,9 @@ attrcolor b ".I"
 # tell screen how to set colors. AB = background, AF=foreground
 termcapinfo xterm-color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defscrollback 5000
+termcapinfo xterm* ti@:te@
+termcapinfo xterm|xterms|xs ti@:te=\E[2J
 # erase background with current bg color
 defbce "on"
 

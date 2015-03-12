@@ -1,7 +1,16 @@
 [core]
 	editor = vim
 [user]
-	email = jjay@ostrovok.ru
+	email = j.borevich@gmail.com
 	name = Yakov Borevich
 [color]
 	ui = auto
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[difftool]
+	prompt = false
