@@ -6,7 +6,6 @@ Bundle 'gmarik/vundle'
 Bundle 'scrooloose/syntastic'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'kien/ctrlp.vim'
-Bundle 'taq/vim-git-branch-info'
 Bundle 'mattn/gist-vim'
 Bundle 'motemen/git-vim'
 Bundle 'jmcantrell/vim-virtualenv'
@@ -17,6 +16,9 @@ Bundle 'ervandew/supertab'
 Bundle 'Chiel92/vim-autoformat'
 Bundle 'jlanzarotta/bufexplorer'
 Bundle 'amiorin/vim-project'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'rdnetto/YCM-Generator'
+Bundle 'SirVer/ultisnips'
 
 filetype plugin indent on
 
@@ -58,10 +60,11 @@ vmap с "+y
 " indent
 set autoindent
 set expandtab
-set softtabstop=-1 " Make 'softtabstop' follow 'shiftwidth'
-set shiftwidth=0   " Make 'shiftwidth' follow 'tabstop'
+set shiftwidth=4   " Make 'shiftwidth' follow 'tabstop'
 au BufEnter * set tabstop=4
+au BufEnter * set shiftwidth=4
 au BufEnter *.yaml,*.css,*.js,*.html set tabstop=2
+au BufEnter *.yaml,*.css,*.js,*.html set shiftwidth=2
 
 " folding
 set foldmethod=indent
@@ -81,12 +84,11 @@ set mousehide
 set nowrap
 syn on
 set backspace=indent,eol,start whichwrap+=<,>,[,]
-set statusline=%{GitBranchInfoString()}
-set statusline=%<%f%h%m%r%#ErrorMsg#%{VirtualEnvStatusline()}-%{GitBranchInfoString()}%#StatusLine#\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P
+"set statusline=%{GitBranchInfoString()}
+"set statusline=%<%f%h%m%r%#ErrorMsg#%{VirtualEnvStatusline()}-%{GitBranchInfoString()}%#StatusLine#\ %b\ %{&encoding}\ 0x\ \ %l,%c%V\ %P
 set laststatus=2
 set smartindent
 set fo+=cr
-set wildignore+=*.so,*.swp,*.zip,*.pyc
 "set sessionoptions=curdir,buffers,tabpages
 set shortmess+=A
 set autoread
@@ -94,6 +96,15 @@ set updatetime=500
 set completeopt=longest,menuone
 set ignorecase
 set smartcase
+
+" TODO: create per-project ignore
+set wildignore+=*.so,*.swp,*.zip,*.pyc
+set wildignore+=*.meta
+set wildignore+=*.dll
+set wildignore+=*.dylib
+set wildignore+=*WonderWay/Library*
+set wildignore+=*WonderWay/Temp*
+set wildignore+=*WonderWay/ios*
 let mapleader = ","
 
 
@@ -150,21 +161,12 @@ let g:bufExplorerSortBy='mru'
 " ctrlp
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_by_filename = 1
 let g:ctrlp_extensions = ['buffertag', 'tag', 'line', 'dir']
+
 map <c-f> :CtrlPLine<cr>
 
 
-
-
-" vim project
-set rtp+=~/.vim/bundle/vim-project/
-"let g:project_use_nerdtree = 1
-call project#rc("~/proj")
-
-Project 'uduet/watchdog/watchdog', 'uduet.watchdog'
-Callback 'uduet.watchdog', 'OpenCSharpProject'
-Project 'uduet/Unity.package/Assets', 'uduet.unity'
-Callback 'uduet.unity', 'OpenCSharpProject'
 
 
 let s:current_project = ""

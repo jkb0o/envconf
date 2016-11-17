@@ -1,5 +1,6 @@
 [core]
 	editor = vim
+	excludesfile = /Users/jjay/.gitignore_global
 [user]
 	email = j.borevich@gmail.com
 	name = Yakov Borevich
@@ -8,9 +9,8 @@
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
-[diff]
-	tool = vimdiff
 [merge]
-	tool = vimdiff
-[difftool]
-	prompt = false
+    tool = unityyamlmerge
+[mergetool "unityyamlmerge"]
+    trustExitCode = false
+    cmd = /Applications/Unity5.2.1/Unity.app/Contents/Tools/UnityYAMLMerge merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
