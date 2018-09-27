@@ -1,6 +1,6 @@
 #! /bin/bash
 CDIR=`pwd`
-NAMES=(.vimrc .vim .screenrc .gitconfig)
+NAMES=(.vimrc .vim .screenrc .gitconfig .inputrc .bash_profile)
 git submodule init
 git submodule update
 for ((i=0;i<${#NAMES[@]};i++)); do
@@ -22,4 +22,7 @@ for ((i=0;i<${#NAMES[@]};i++)); do
 
     ln -s $ABS $LOC
 done
+ITERMDIR="~/Library/Application Support/iTerm2/DynamicProfiles/"
+mkdir -p $ITERMDIR
+cp iterm.json "$ITERMDIR/default"
 
