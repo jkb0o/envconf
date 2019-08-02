@@ -5,3 +5,16 @@
 	name = Yakov Borevich
 [color]
 	ui = auto
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[merge]
+    tool = unityyamlmerge
+[mergetool "unityyamlmerge"]
+    trustExitCode = false
+    cmd = /Applications/Unity5.2.1/Unity.app/Contents/Tools/UnityYAMLMerge merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
