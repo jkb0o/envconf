@@ -22,7 +22,7 @@ for ((i=0;i<${#NAMES[@]};i++)); do
 
     ln -s $ABS $LOC
 done
-ITERMDIR="~/Library/Application Support/iTerm2/DynamicProfiles/"
+ITERMDIR="~/Library/ApplicationSupport/iTerm2/DynamicProfiles/"
 mkdir -p $ITERMDIR
 cp iterm.json "$ITERMDIR/default"
 
